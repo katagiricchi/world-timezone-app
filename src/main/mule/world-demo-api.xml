@@ -10,7 +10,7 @@ http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/htt
 	<http:request-config name="HTTP_Request_configuration" doc:name="HTTP Request configuration" doc:id="a87f9fed-3113-4cff-af76-4b3895d5baad" basePath="/api/timezone" >
 		<http:request-connection host="worldtimeapi.org" />
 	</http:request-config>
-	<flow name="world-demo-api2Flow" doc:id="ff05f484-aa9f-416f-93fd-e9aa28a9ca61" >
+	<flow name="world-demo-apiFlow" doc:id="ff05f484-aa9f-416f-93fd-e9aa28a9ca61" >
 		<http:listener doc:name="Listener" doc:id="d96e7810-f337-4ddb-88ee-1690ed5d565b" config-ref="HTTP_Listener_config" path="/{region}/{city}"/>
 		<http:request method="GET" doc:name="Request" doc:id="b58e534e-a7d5-4f68-8d80-f623d341f51b" config-ref="HTTP_Request_configuration" path="/{region}/{city}">
 			<http:uri-params ><![CDATA[#[output application/java
