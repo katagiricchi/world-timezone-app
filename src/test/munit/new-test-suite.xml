@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+	<munit:config name="new-test-suite.xml" />
+	<munit:test name="new-test-suite-world-demo-apiFlowTest" doc:id="ed07ca34-433e-433d-9c82-c50a56855304" description="Test">
+		<munit:execution >
+			<munit:set-event doc:name="Set Event" doc:id="2adc0434-d0c6-4e09-92f7-e3cd514e533c" >
+				<munit:attributes value="#[{method : 'GET', uriParams : {region :'Asia',city :'Singapore'}}]" />
+			</munit:set-event>
+			<flow-ref doc:name="Flow-ref to world-demo-apiFlow" doc:id="3c59d062-66e2-48aa-9a6c-7c0b2159347c" name="world-demo-apiFlow"/>
+		</munit:execution>
+		<munit:validation>
+			<munit-tools:assert-that doc:name="Assert that" doc:id="91503256-8eda-4b04-9023-ef39cc0aee2d" expression="#[attributes.statusCode]" is="#[MunitTools::equalTo(200)]"/>
+		</munit:validation>
+	</munit:test>
+
+
+</mule>
